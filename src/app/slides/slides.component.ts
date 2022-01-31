@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./slides.component.scss']
 })
 export class SlidesComponent implements OnInit {
-  imgN = 1;
+  imgN = 0;
   slideSrc = "assets/photos/1.jpg";
 
   constructor() { }
@@ -16,9 +16,9 @@ export class SlidesComponent implements OnInit {
 
   changeSlide(event: MouseEvent): void {
     if (event.clientX / window.innerWidth > 0.5) {
-      this.slideSrc = "assets/photos/" + (++this.imgN % 50 + 1)  + ".jpg";
+      this.slideSrc = "assets/photos/" + (((++this.imgN % 50) + 50) % 50 + 1)  + ".jpg";
     } else {
-      this.slideSrc = "assets/photos/" + (--this.imgN % 50 + 1) + ".jpg";
+      this.slideSrc = "assets/photos/" + (((--this.imgN % 50) + 50) % 50 + 1) + ".jpg";
     }
   }
 
