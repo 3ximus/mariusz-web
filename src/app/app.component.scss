@@ -1,10 +1,22 @@
+@import '~src/globals';
 
-h1 {
+header {
+	margin-top: $top-margin;
+	position: sticky;
+	width: fit-content;
+}
+
+h1, h3 {
 	font-family: georgia,palatino,book antiqua,palatino linotype,serif;
-	font-size: 15px;
+	font-size: 18px;
 	font-weight: 400;
 	margin: 20px;
 	color: darkslategrey;
+}
+
+footer {
+	position: fixed;
+	bottom: 0;
 }
 
 a, a:link, a:visited {

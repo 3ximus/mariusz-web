@@ -1,0 +1,33 @@
+@import '~src/globals';
+
+
+.slide-container {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	position: fixed;
+	top: $top-margin;
+
+	.img-wrapper {
+		height: calc(100vh - $top-margin * 2);
+		&::before, &::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			width: 50%;
+			height: 100%;
+		// cursor: url("~src/assets/l.png");
+		}
+		&::before {
+			left: 0;
+			cursor: w-resize;
+		}
+		&::after {
+			right: 0;
+			cursor: e-resize;
+		}
+		img {
+			height: inherit;
+		}
+	}
+}
