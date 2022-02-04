@@ -1,6 +1,5 @@
 @import '~src/globals';
 
-
 .slide-container {
 	width: 100%;
 	display: flex;
@@ -16,16 +15,13 @@
 			top: 0;
 			width: 50%;
 			height: 100%;
-		// cursor: url("~src/assets/l.png");
 		}
 		&::before {
 			left: 0;
-			// cursor: w-resize;
 			cursor: url(~src/assets/left_cursor.png), auto;
 		}
 		&::after {
 			right: 0;
-			// cursor: e-resize;
 			cursor: url(~src/assets/right_cursor.png), auto;
 		}
 		img {

@@ -20,7 +20,7 @@ jobs:
          env:
            GH_TOKEN: ${{ secrets.GH_TOKEN }}
          run: |
-           find src/ -name "*.scss" -exec sed -i "s@/assets@assets@" {} \;
+           # find src/ -name "*.scss" -exec sed -i "s@/assets@assets@" {} \;
            npm install
            # npm test -- --watch=false --progress=false --browsers=ChromeHeadlessCI
            # npm run webdriver-update-ci
