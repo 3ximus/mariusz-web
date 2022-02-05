@@ -6,26 +6,28 @@
 	justify-content: center;
 	position: fixed;
 	top: $top-margin;
-
-	.img-wrapper {
-		height: calc(100vh - $top-margin * 2);
-		&::before, &::after {
+	&::before, &::after {
 			content: '';
 			position: absolute;
 			top: 0;
 			width: 50%;
 			height: 100%;
-		}
-		&::before {
+	}
+	&::before {
 			left: 0;
 			cursor: url(~src/assets/left_cursor.png), auto;
-		}
-		&::after {
+	}
+	&::after {
 			right: 0;
 			cursor: url(~src/assets/right_cursor.png), auto;
-		}
-		img {
-			height: inherit;
-		}
+	}
+
+	.img-wrapper {
+		height: calc(100vh - $top-margin * 2);
 	}
 }
+
+::ng-deep img {
+	height: inherit;
+}
+
