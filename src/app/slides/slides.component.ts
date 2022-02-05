@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
 
 const NIMAGES = 50;
-const BUFFER_SIZE = 3;
+const BUFFER_SIZE = 6;
 
 @Component({
   selector: 'app-slides',
@@ -18,7 +18,7 @@ export class SlidesComponent implements AfterViewInit {
 
   constructor() {
     this.imageSources = Array.from(Array(NIMAGES), (_,i) => "assets/photos/" + (i+1) + ".jpg" );
-    this.imageBuffer = (this.imageSources.slice(-1 - BUFFER_SIZE, -1).concat(this.imageSources.slice(0, 1 + BUFFER_SIZE))).map(src => {
+    this.imageBuffer = (this.imageSources.slice(- BUFFER_SIZE).concat(this.imageSources.slice(0, 1 + BUFFER_SIZE))).map(src => {
       const img = new Image();
       img.src = src;
       img.style.height = "inherit";
@@ -27,27 +27,25 @@ export class SlidesComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    // const img = new Image();
-    // img.src = this.imageSources[0];
-    // img.style.height = "inherit";
     this.imgTarget.nativeElement.appendChild(this.imageBuffer[BUFFER_SIZE + 0]);
   }
 
   changeSlide(event: MouseEvent): void {
-
-    // TODO load new image and trouw away old one
     const img = new Image();
     if (event.clientX / window.innerWidth > 0.5) {
-      img.src = this.imageSources[(((++this.imgN % NIMAGES) + NIMAGES) % NIMAGES)];
+      img.src = this.imageSources[((((++this.imgN + BUFFER_SIZE) % NIMAGES) + NIMAGES) % NIMAGES)];
       img.style.height = "inherit";
+      this.imageBuffer.push(img);
+      this.imageBuffer.shift();
     } else {
-      img.src = this.imageSources[(((--this.imgN % NIMAGES) + NIMAGES) % NIMAGES)];
+      img.src = this.imageSources[((((--this.imgN - BUFFER_SIZE) % NIMAGES) + NIMAGES) % NIMAGES)];
       img.style.height = "inherit";
+      this.imageBuffer.unshift(img);
+      this.imageBuffer.pop();
     }
     img.onload = _ => { // switch images
-      this.imgTarget.nativeElement.appendChild(img);
+      this.imgTarget.nativeElement.appendChild(this.imageBuffer[BUFFER_SIZE + 0]);
       this.imgTarget.nativeElement.removeChild(this.imgTarget.nativeElement.firstChild);
     }
   }
-
 }
