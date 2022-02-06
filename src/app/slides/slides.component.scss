@@ -23,11 +23,20 @@
 	}
 
 	.img-wrapper {
-		height: calc(100vh - $top-margin * 2);
+		max-height: calc(100vh - $top-margin * 2);
 	}
 }
 
 ::ng-deep img {
-	height: inherit;
+	max-height: inherit;
+	max-width: 100%;
 }
 
+@media screen and (max-width: 930px) {
+	.slide-container {
+		top: $top-margin-mobile;
+		.img-wrapper {
+			max-height: calc(100vh - $top-margin-mobile * 2);
+		}
+	}
+}
