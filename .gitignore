@@ -1,4 +1,5 @@
 src/assets/photos/original/*
+src/assets/photos/backup/*
 
 # Compiled output
 /dist
