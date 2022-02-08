@@ -20,6 +20,13 @@ footer {
 }
 
 a, a:link, a:visited {
-	color: inherit;
 	text-decoration: none;
+}
+
+@media screen and (max-width: 930px) {
+	footer {
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+	}
 }
