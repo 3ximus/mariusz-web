@@ -29,6 +29,15 @@ export class SlidesComponent implements AfterViewInit {
 		this.imgTarget.nativeElement.appendChild(this.imageBuffer[BUFFER_SIZE]);
 	}
 
+	reset() {
+		this.imageBuffer = (this.imageSources.slice(- BUFFER_SIZE).concat(this.imageSources.slice(0, 1 + BUFFER_SIZE))).map(src => {
+			const img = new Image();
+			img.src = src;
+			return img;
+		});
+		this.updateImage();
+	}
+
 	changeSlide(event: MouseEvent): void {
 		const img = new Image();
 		if (event.clientX / window.innerWidth > 0.5) {

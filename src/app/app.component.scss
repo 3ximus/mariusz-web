@@ -23,10 +23,25 @@ a, a:link, a:visited {
 	text-decoration: none;
 }
 
+.home {
+	position: fixed;
+	right: 10px;
+	bottom: 10px;
+	width: 80px;
+	height: 80px;
+	background-color: black;
+	border-radius: 50%;
+	cursor: pointer;
+	z-index: 2;
+}
+
 @media screen and (max-width: 930px) {
 	footer {
 		display: flex;
 		justify-content: space-between;
 		width: 100%;
+	}
+	.home {
+		bottom: 50px;
 	}
 }
