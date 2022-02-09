@@ -1,5 +1,8 @@
 @import '~src/globals';
 
+$dot-size: 60px;
+$dot-small-size: 30px;
+
 header {
 	margin-top: $top-margin;
 	position: sticky;
@@ -8,7 +11,7 @@ header {
 
 h1, h3 {
 	font-family: georgia,palatino,book antiqua,palatino linotype,serif;
-	font-size: 18px;
+	font-size: 16px;
 	font-weight: 400;
 	margin: 20px;
 	color: darkslategrey;
@@ -17,6 +20,9 @@ h1, h3 {
 footer {
 	position: fixed;
 	bottom: 0;
+	h3 {
+		line-height: .4;
+	}
 }
 
 a, a:link, a:visited {
@@ -27,8 +33,8 @@ a, a:link, a:visited {
 	position: fixed;
 	right: 10px;
 	bottom: 10px;
-	width: 80px;
-	height: 80px;
+	width: $dot-size;
+	height: $dot-size;
 	background-color: black;
 	border-radius: 50%;
 	cursor: pointer;
@@ -42,6 +48,9 @@ a, a:link, a:visited {
 		width: 100%;
 	}
 	.home {
-		bottom: 50px;
+		right: calc(50vw - $dot-small-size / 2);
+		bottom: calc($top-margin / 2);
+		width: $dot-small-size;
+		height: $dot-small-size;
 	}
 }
