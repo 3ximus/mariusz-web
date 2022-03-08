@@ -16,11 +16,13 @@
 	}
 	&::before {
 		left: 0;
-		cursor: url(~src/assets/left_cursor.png), auto;
+		// cursor: url(~src/assets/left_cursor.png), auto;
+		cursor: w-resize;
 	}
 	&::after {
 		right: 0;
-		cursor: url(~src/assets/right_cursor.png), auto;
+		// cursor: url(~src/assets/right_cursor.png), auto;
+		cursor: e-resize;
 	}
 	.img-wrapper {
 		position: absolute;
