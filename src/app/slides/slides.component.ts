@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
+import {NIMAGES} from '../constants';
 
-const NIMAGES = 50;
 const BUFFER_SIZE = 5;
 
 @Component({
