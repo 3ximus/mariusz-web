@@ -34,7 +34,7 @@
 	}
 }
 
-::ng-deep img.slide {
+::ng-deep img {
 	margin: $top-margin;
 	max-width: min(70vw, 600px);
 	max-height: calc(100vh - $top-margin * 2);
