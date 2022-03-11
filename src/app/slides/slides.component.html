@@ -1,4 +1,4 @@
-<div class="slide-container" (click)="changeSlide($event)">
+<div #slide class="slide-container" (mousemove)="mouseOverSlide($event)" (click)="changeSlide($event)">
 	<div #imgTarget class="img-wrapper">
 		<!-- <img [src]="slideSrc" alt=""> -->
 	</div>

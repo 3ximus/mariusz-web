@@ -15,6 +15,7 @@ export class SlidesComponent implements AfterViewInit {
 	imageBuffer: HTMLImageElement[];
 
 	@ViewChild('imgTarget') imgTarget!: ElementRef;
+	@ViewChild('slide') slide!: ElementRef;
 
 	constructor() {
 		this.imageSources = Array.from(Array(NIMAGES), (_,i) => "assets/photos/" + (i+1) + ".jpg" );
@@ -33,7 +34,6 @@ export class SlidesComponent implements AfterViewInit {
 		this.imageBuffer = (this.imageSources.slice(- BUFFER_SIZE).concat(this.imageSources.slice(0, 1 + BUFFER_SIZE))).map(src => {
 			const img = new Image();
 			img.src = src;
-			img.classList.add('slide');
 			return img;
 		});
 		this.updateImage();
@@ -41,7 +41,8 @@ export class SlidesComponent implements AfterViewInit {
 
 	changeSlide(event: MouseEvent): void {
 		const img = new Image();
-		if (event.clientX / window.innerWidth > 0.5) {
+		const imageMiddle = this.imgTarget.nativeElement.offsetLeft + this.imgTarget.nativeElement.clientWidth / 2;
+		if (event.clientX > imageMiddle) {
 			img.src = this.imageSources[((((++this.imgN + BUFFER_SIZE) % NIMAGES) + NIMAGES) % NIMAGES)];
 			this.imageBuffer.push(img);
 			this.imageBuffer.shift();
@@ -51,6 +52,15 @@ export class SlidesComponent implements AfterViewInit {
 			this.imageBuffer.pop();
 		}
 		this.updateImage();
+	}
+
+	mouseOverSlide(event: MouseEvent): void {
+		const imageMiddle = this.imgTarget.nativeElement.offsetLeft + this.imgTarget.nativeElement.clientWidth / 2;
+		if (event.clientX > imageMiddle) {
+			this.slide.nativeElement.style.cursor = 'e-resize';
+		} else {
+			this.slide.nativeElement.style.cursor = 'w-resize';
+		}
 	}
 
 	private updateImage(): void {
