@@ -1,7 +1,12 @@
-<!-- <div class="scrim" routerLink=""></div> -->
 <div class="container">
 	<div class="img-container" *ngFor="let imgSrc of imageSources" >
-		<img src="{{ imgSrc }}" alt="">
+		<img src="{{ imgSrc }}" (click)="previewImageClick($event)" alt="">
 	</div>
+</div>
+
+<div *ngIf="preview" class="preview">
+	<div class="preview-background"></div>
+	<img #previewImage src="">
+	<div class="scrim" (click)="preview = false"></div>
 </div>
 

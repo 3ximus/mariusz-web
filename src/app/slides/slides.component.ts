@@ -33,6 +33,7 @@ export class SlidesComponent implements AfterViewInit {
 		this.imageBuffer = (this.imageSources.slice(- BUFFER_SIZE).concat(this.imageSources.slice(0, 1 + BUFFER_SIZE))).map(src => {
 			const img = new Image();
 			img.src = src;
+			img.classList.add('slide');
 			return img;
 		});
 		this.updateImage();
