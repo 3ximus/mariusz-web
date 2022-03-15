@@ -18,9 +18,9 @@
 }
 
 ::ng-deep img {
-	margin: $top-margin;
+	margin: $edge-margin;
 	max-width: min(70vw, 600px);
-	max-height: calc(100vh - $top-margin * 2);
+	max-height: calc(100vh - $edge-margin * 2);
 }
 
 @media screen and (max-width: 1200px) {
@@ -37,7 +37,7 @@
 		left: 0 !important;
 	}
 	::ng-deep img {
-		max-height: calc(100vh - $top-margin * 5);
-		max-width: calc(100vw - $top-margin * 2);
+		max-height: calc(100vh - $edge-margin * 5);
+		max-width: calc(100vw - $edge-margin * 2);
 	}
 }

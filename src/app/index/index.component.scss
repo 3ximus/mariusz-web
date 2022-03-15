@@ -17,6 +17,7 @@
 	// column-gap: 30px;
 	// row-gap: 30px;
 	margin: auto;
+	margin-top: 100px;
 }
 
 .img-container {
@@ -51,8 +52,8 @@
 	img {
 		object-fit: cover;
 		z-index: 2;
-		max-width: calc(100vw - $top-margin * 2);
-		max-height: calc(100vh - $top-margin * 2);
+		max-width: calc(100vw - $edge-margin * 2);
+		max-height: calc(100vh - $edge-margin * 2);
 	}
 
 	.scrim {

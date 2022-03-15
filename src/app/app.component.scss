@@ -4,25 +4,23 @@ $dot-size: 60px;
 $dot-small-size: 30px;
 
 header {
-	margin-top: $top-margin;
+	margin-top: $edge-margin;
 	position: sticky;
 	width: fit-content;
 }
 
 h1, h3 {
-	font-family: georgia,palatino,book antiqua,palatino linotype,serif;
-	font-size: 16px;
-	font-weight: 400;
-	margin: 20px;
-	margin-left: 40px;
+	margin: 0px;
 	color: darkslategrey;
 }
 
 footer {
 	position: fixed;
 	bottom: 0;
-	h3 {
-		line-height: .4;
+	margin: $edge-margin;
+	p {
+		margin: 0;
+		margin-top: 10px;
 	}
 }
 
@@ -30,10 +28,11 @@ a, a:link, a:visited {
 	text-decoration: none;
 }
 
-.home {
+.home-circle {
 	position: fixed;
-	right: 10px;
-	bottom: 10px;
+	right: 0;
+	bottom: 0;
+	margin: $edge-margin;
 	width: $dot-size;
 	height: $dot-size;
 	background-color: black;
@@ -46,11 +45,11 @@ a, a:link, a:visited {
 	footer {
 		display: flex;
 		justify-content: space-between;
-		width: 100%;
+		width: calc(100% - $edge-margin * 2);
 	}
-	.home {
+	.home-circle {
 		right: calc(50vw - $dot-small-size / 2);
-		bottom: calc($top-margin / 2);
+		bottom: 0;
 		width: $dot-small-size;
 		height: $dot-small-size;
 	}
