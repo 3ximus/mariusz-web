@@ -2,6 +2,8 @@ import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
 import {NIMAGES} from '../constants';
 
 const BUFFER_SIZE = 5;
+const LANDSCAPE_WIDTH = 800;
+const PORTRAIT_WIDTH = 600;
 
 @Component({
 	selector: 'app-slides',
@@ -19,11 +21,10 @@ export class SlidesComponent implements AfterViewInit {
 
 	constructor() {
 		this.imageSources = Array.from(Array(NIMAGES), (_,i) => "assets/photos/" + (i+1) + ".jpg" );
-		this.imageBuffer = (this.imageSources.slice(- BUFFER_SIZE).concat(this.imageSources.slice(0, 1 + BUFFER_SIZE))).map(src => {
-			const img = new Image();
-			img.src = src;
-			return img;
-		});
+		this.imageBuffer = this.imageSources
+												.slice(- BUFFER_SIZE)
+												.concat(this.imageSources.slice(0, 1 + BUFFER_SIZE))
+												.map(this.createImage);
 	}
 
 	ngAfterViewInit(): void {
@@ -31,27 +32,31 @@ export class SlidesComponent implements AfterViewInit {
 	}
 
 	reset() {
-		this.imageBuffer = (this.imageSources.slice(- BUFFER_SIZE).concat(this.imageSources.slice(0, 1 + BUFFER_SIZE))).map(src => {
-			const img = new Image();
-			img.src = src;
-			return img;
-		});
-		this.updateImage();
+		this.imageBuffer = this.imageSources
+												.slice(- BUFFER_SIZE)
+												.concat(this.imageSources.slice(0, 1 + BUFFER_SIZE))
+												.map(this.createImage);
+		this.updateImageElement();
 	}
 
 	changeSlide(event: MouseEvent): void {
-		const img = new Image();
 		const imageMiddle = this.imgTarget.nativeElement.offsetLeft + this.imgTarget.nativeElement.clientWidth / 2;
 		if (event.clientX > imageMiddle) {
-			img.src = this.imageSources[((((++this.imgN + BUFFER_SIZE) % NIMAGES) + NIMAGES) % NIMAGES)];
-			this.imageBuffer.push(img);
+			this.imageBuffer.push(
+				this.createImage(
+					this.imageSources[((((++this.imgN + BUFFER_SIZE) % NIMAGES) + NIMAGES) % NIMAGES)]
+				)
+			);
 			this.imageBuffer.shift();
 		} else {
-			img.src = this.imageSources[((((--this.imgN - BUFFER_SIZE) % NIMAGES) + NIMAGES) % NIMAGES)];
-			this.imageBuffer.unshift(img);
+			this.imageBuffer.unshift(
+				this.createImage(
+					this.imageSources[((((--this.imgN - BUFFER_SIZE) % NIMAGES) + NIMAGES) % NIMAGES)]
+				)
+			);
 			this.imageBuffer.pop();
 		}
-		this.updateImage();
+		this.updateImageElement();
 	}
 
 	mouseOverSlide(event: MouseEvent): void {
@@ -63,8 +68,18 @@ export class SlidesComponent implements AfterViewInit {
 		}
 	}
 
-	private updateImage(): void {
+	private updateImageElement(): void {
 		this.imgTarget.nativeElement.appendChild(this.imageBuffer[BUFFER_SIZE]);
 		this.imgTarget.nativeElement.removeChild(this.imgTarget.nativeElement.firstChild);
+	}
+
+	private createImage(src: string): HTMLImageElement {
+		const img = new Image();
+		img.src = src;
+		if (img.width / img.height > 1)  // landscape picture
+			img.width = LANDSCAPE_WIDTH;
+		else
+			img.width = PORTRAIT_WIDTH;
+		return img;
 	}
 }
