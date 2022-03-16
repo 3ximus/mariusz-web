@@ -76,10 +76,13 @@ export class SlidesComponent implements AfterViewInit {
 	private createImage(src: string): HTMLImageElement {
 		const img = new Image();
 		img.src = src;
-		if (img.width / img.height > 1)  // landscape picture
-			img.width = LANDSCAPE_WIDTH;
-		else
-			img.width = PORTRAIT_WIDTH;
+		img.onload = _ => {
+			if (img.width / img.height > 1) {
+				img.width = LANDSCAPE_WIDTH;
+			} else {
+				img.width = PORTRAIT_WIDTH;
+			}
+		}
 		return img;
 	}
 }

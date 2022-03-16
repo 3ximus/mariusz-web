@@ -50,7 +50,7 @@
 	}
 
 	img {
-		object-fit: cover;
+		object-fit: contain;
 		z-index: 2;
 		max-width: calc(100vw - $edge-margin * 2);
 		max-height: calc(100vh - $edge-margin * 2);
