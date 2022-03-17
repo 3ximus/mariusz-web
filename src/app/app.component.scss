@@ -3,21 +3,11 @@
 $dot-size: 60px;
 $dot-small-size: 30px;
 
-header {
-	margin-top: $edge-margin;
-	position: sticky;
-	width: fit-content;
-}
-
-h1, h3 {
-	margin: 0px;
-	color: darkslategrey;
-}
-
 footer {
 	position: fixed;
 	bottom: 0;
 	margin: $edge-margin;
+	margin-left: calc($edge-margin * 2);
 	p {
 		margin: 0;
 		margin-top: 10px;

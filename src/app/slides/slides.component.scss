@@ -21,6 +21,7 @@
 	margin: $edge-margin;
 	max-height: calc(100vh - $edge-margin * 2);
 	max-width: calc(100vw - $edge-margin * 2);
+	object-fit: contain;
 }
 
 @media screen and (max-width: 1200px) {
