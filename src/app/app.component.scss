@@ -8,6 +8,10 @@ footer {
 	bottom: 0;
 	margin: $edge-margin;
 	margin-left: calc($edge-margin * 2);
+
+	font-style: normal;
+	font-size: 10pt;
+	line-height: 12pt;
 	p {
 		margin: 0;
 		margin-top: 10px;
