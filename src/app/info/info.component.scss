@@ -29,5 +29,8 @@ a, a:link, a:visited {
 	margin-left: calc($edge-margin * 2);
 	font-style: normal;
 	font-size: 10pt;
-	line-height: 12pt;
+
+	p {
+		margin-top: 0;
+	}
 }
