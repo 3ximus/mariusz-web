@@ -1,9 +1,5 @@
 import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
-import {NIMAGES} from '../constants';
-
-const BUFFER_SIZE = 5;
-const LANDSCAPE_WIDTH = 940;
-const PORTRAIT_WIDTH = 670;
+import {BUFFER_SIZE, LANDSCAPE_WIDTH, NIMAGES, PORTRAIT_WIDTH} from '../constants';
 
 @Component({
 	selector: 'app-slides',
