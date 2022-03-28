@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
-import {BUFFER_SIZE, LANDSCAPE_WIDTH, NIMAGES, PORTRAIT_WIDTH} from '../constants';
+import {BUFFER_SIZE, NIMAGES} from '../constants';
 
 @Component({
 	selector: 'app-slides',
@@ -28,6 +28,7 @@ export class SlidesComponent implements AfterViewInit {
 	}
 
 	reset() {
+		this.imgN = 0;
 		this.imageBuffer = this.imageSources
 												.slice(- BUFFER_SIZE)
 												.concat(this.imageSources.slice(0, 1 + BUFFER_SIZE))
@@ -72,12 +73,9 @@ export class SlidesComponent implements AfterViewInit {
 	private createImage(src: string): HTMLImageElement {
 		const img = new Image();
 		img.src = src;
-		img.onload = _ => {
-			if (img.width / img.height > 1) {
-				img.width = LANDSCAPE_WIDTH;
-			} else {
-				img.width = PORTRAIT_WIDTH;
-			}
+		img.onload = () => {
+			if (img.width / img.height > 1) img.classList.add('landscape');
+			else img.classList.add('portrait');
 		}
 		return img;
 	}

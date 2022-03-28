@@ -42,12 +42,13 @@ a, a:link, a:visited {
 
 @media screen and (max-width: 930px) {
 	footer {
-		display: flex;
-		justify-content: space-between;
-		width: calc(100% - $edge-margin * 2);
+		margin-left: $edge-margin;
+		p:first-child {
+			position: fixed;
+			top: calc($edge-margin * 3);
+		}
 	}
 	.home-circle {
-		right: calc(50vw - $dot-small-size / 2);
 		bottom: 0;
 		width: $dot-small-size;
 		height: $dot-small-size;

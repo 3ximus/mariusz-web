@@ -24,10 +24,12 @@
 	object-fit: contain;
 }
 
-@media screen and (max-width: 1200px) {
-	.img-wrapper {
-		left: $slide-position-ss !important;
-	}
+::ng-deep .landscape {
+	width: $landscape-width;
+}
+
+::ng-deep .portrait {
+	width: $portrait-width;
 }
 
 @media screen and (max-width: 930px) {
@@ -35,6 +37,7 @@
 		left: 0 !important;
 	}
 	::ng-deep img {
+		width: calc(100vw - $edge-margin * 2) !important;
 		max-height: calc(100vh - $edge-margin * 5);
 	}
 }
