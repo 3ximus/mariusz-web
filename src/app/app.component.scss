@@ -1,56 +1,46 @@
-@import '~src/globals';
+@import "~src/globals";
 
 $dot-size: 60px;
 $dot-small-size: 30px;
 
 footer {
-	position: fixed;
-	bottom: 0;
-	margin: $edge-margin;
-	margin-left: calc($edge-margin * 2);
+  position: fixed;
+  bottom: 0;
+  margin: $edge-margin;
+  margin-left: calc($edge-margin * 2);
 
-	font-style: normal;
-	font-size: 10pt;
-	line-height: 12pt;
-	p {
-		margin: 0;
-	}
+  font-style: normal;
+  font-size: 10pt;
+  line-height: 12pt;
+  p {
+    margin: 0;
+  }
 }
 
-a, a:link, a:visited {
-	text-decoration: none;
-	color: black;
-	font-style: italic;
-	transition: color .2s;
-	&:hover {
-		color: darkgrey;
-	}
-}
-
-.home-circle {
-	position: fixed;
-	right: 0;
-	bottom: 0;
-	margin: $edge-margin;
-	width: $dot-size;
-	height: $dot-size;
-	background-color: black;
-	border-radius: 50%;
-	cursor: pointer;
-	z-index: 2;
+a,
+a:link,
+a:visited {
+  text-decoration: none;
+  color: black;
+  font-style: italic;
+  transition: color 0.2s;
+  &:hover {
+    color: darkgrey;
+  }
 }
 
 @media screen and (max-width: 930px) {
-	footer {
-		margin-left: $edge-margin;
-		p:first-child {
-			position: fixed;
-			top: calc($edge-margin * 3);
-		}
-	}
-	.home-circle {
-		bottom: 0;
-		width: $dot-small-size;
-		height: $dot-small-size;
-	}
+  footer {
+    margin-left: $edge-margin;
+    p:first-child {
+      position: fixed;
+      top: calc($edge-margin * 3);
+    }
+  }
+}
+
+@media screen and (max-width: 930px) and (max-height: 666px) {
+  footer p:first-child {
+    top: calc($edge-margin * 1);
+  }
 }

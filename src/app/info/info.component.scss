@@ -1,36 +1,59 @@
-@import '~src/globals';
+@import "~src/globals";
 
 :host {
-	position: absolute;
-	height: 100%;
-	width: 100%;
-	top: 0;
-	left: 0;
-	background-color: white;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: white;
 }
 
-a, a:link, a:visited {
-	text-decoration: none;
-	color: $text-color;
+a,
+a:link,
+a:visited {
+  text-decoration: none;
+  color: $text-color;
 }
 
 .scrim {
-	position: absolute;
-	height: 100%;
-	width: 100%;
-	top: 0;
-	left: 0;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
 }
 
 .info {
-	position: absolute;
-	color: $text-color;
-	margin: $edge-margin;
-	margin-left: calc($edge-margin * 2);
-	font-style: normal;
-	font-size: 10pt;
+  position: absolute;
+  color: $text-color;
+  margin: $edge-margin;
+  margin-left: calc($edge-margin * 2);
+  font-style: normal;
+  font-size: 10pt;
 
-	p {
-		margin-top: 0;
-	}
+  p {
+    margin-top: 0;
+  }
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  margin: $edge-margin;
+  margin-left: calc($edge-margin * 2);
+
+  font-style: normal;
+  font-size: 10pt;
+  line-height: 12pt;
+  p {
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 930px) {
+  footer {
+    margin-left: $edge-margin;
+  }
 }

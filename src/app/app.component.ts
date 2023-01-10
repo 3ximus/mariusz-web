@@ -8,8 +8,4 @@ import {SlidesComponent} from './slides/slides.component';
 })
 export class AppComponent {
   @ViewChild(SlidesComponent) slides!: SlidesComponent;
-
-  resetSlides() {
-    this.slides.reset();
-  }
 }
